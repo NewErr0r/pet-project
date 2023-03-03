@@ -11,8 +11,6 @@ function toggleCodeBlock() {
   event.preventDefault();
 }
 
-
-//
 $(document).ready(function() {
   $('.expand-btn').click(function(e) {
     e.preventDefault();
@@ -219,7 +217,6 @@ function toggleCodeBlock_rtr_r_ospf(event) {
     menu.style.display = "none";
   }
 }
-
 
 
 //

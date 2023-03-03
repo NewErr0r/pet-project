@@ -1,0 +1,49 @@
+---
+- name: Установка Docker и Docker Compose на Ubuntu 20.04
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Обновление кеша APT
+      apt:
+        update_cache: yes
+
+    - name: Установка зависимостей Docker
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+        state: present
+
+    - name: Добавление ключа GPG Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Добавление репозитория Docker
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Установка Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Установка Docker Compose
+      shell: >
+        curl -s https://api.github.com/repos/docker/compose/releases/latest |
+        grep browser_download_url |
+        grep docker-compose-Linux-x86_64 |
+        cut -d '"' -f 4 |
+        xargs sudo curl -L -o /usr/local/bin/docker-compose
+      args:
+        executable: /bin/bash
+
+    - name: Добавление прав на выполнение Docker Compose
+      file:
+        path: /usr/local/bin/docker-compose
+        mode: 'a+x'
