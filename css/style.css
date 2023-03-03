@@ -1,0 +1,31 @@
+.card {
+    width: 32%;
+    margin-left: 1%;
+}
+
+.instructions {
+    display: none;
+  }
+  
+.modal-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+code pre {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 20px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
