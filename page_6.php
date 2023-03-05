@@ -32,6 +32,8 @@
         </div>       
     </div>
 
+    <p><a href="index.php" class="w-100 btn btn-lg btn-outline-primary">Назад:</a></p>
+
     <?php require "blocks/footer.php" ?>
 </body>
 </html>

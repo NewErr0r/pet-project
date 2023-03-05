@@ -370,6 +370,8 @@
 
         </div>
 
+        <p><a href="../demo.php" class="w-100 btn btn-lg btn-outline-primary">Вернуться к выбору модуля:</a></p>
+
     <?php require "../../blocks/footer.php" ?>
 </body>
 </html>

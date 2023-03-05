@@ -26,9 +26,9 @@
                 <h4 class="my-0 fw-normal"><?php echo $word ?></h4>
               </div>
               <div class="card-body">
-                <img src="img/<?php echo ($i + 1)?>.jpg" class="img-thumbnail" style="display: block; margin-left: auto; margin-right: auto; max-width: 500px; max-height: 500px;">
-                <a href="page_<?php echo $i + 1 ?>.php" class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
+                <img src="img/<?php echo ($i + 1)?>.jpg" class="img-thumbnail" style="display: block; margin-left: auto; margin-right: auto; max-width: 500px; max-height: 500px;"> 
               </div>
+              <a href="page_<?php echo $i + 1 ?>.php" class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
             </div>
         <?php endfor; ?>
     </div>
