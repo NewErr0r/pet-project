@@ -1,0 +1,35 @@
+upstream backend {
+	server {{ ansible_ssh_host }}:8000;
+}
+
+server {
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+
+	root /var/www/html;
+
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name www.sysahelper.ru;
+
+	ssl_certificate /etc/ssl/sysahelper.crt;
+	ssl_certificate_key /etc/ssl/sysahelper.key;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location / {
+		proxy_pass http://backend;
+	}
+
+}
+
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name www.sysahelper.ru;
+	return 302 https://www.sysahelper.ru;
+}
+

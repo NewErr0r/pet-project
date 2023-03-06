@@ -45,7 +45,7 @@
 
     </div>   
 
-    <p><a href="../page_6.php" class="w-100 btn btn-lg btn-outline-primary">Назад:</a></p>
+    <p><a href="../pages/page_6.php" class="w-100 btn btn-lg btn-outline-primary">Назад:</a></p>
 
     <?php require "../blocks/footer.php" ?>
 </body>
