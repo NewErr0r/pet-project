@@ -62,7 +62,7 @@
         dest: '{{ path_for_project }}'
       loop:
         - docker-compose.yml
-        - Dockerfile
+        - Dockerfile_local
 
     - name: Pip install docker-compose
       pip: 
