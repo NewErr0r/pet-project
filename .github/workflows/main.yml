@@ -19,7 +19,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: your-dockerhub-username/my-image:${{ github.sha }}
+        tags: NewErr0r/web-project:${{ github.sha }}
         builder: |
           FROM php:8-cli
           COPY ./web_project /usr/src/myapp
