@@ -2,7 +2,9 @@ version: '3'
 
 services:
   php:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile_local
     volumes:
       - ./web_project:/app
     working_dir: /app
