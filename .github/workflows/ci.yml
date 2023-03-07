@@ -34,5 +34,5 @@ jobs:
           tags: ${{ env.IMAGE_NAME }}:${{ github.sha }}
           builder: |
             FROM php:8-cli
-            COPY ./web_project /usr/src/myapp
-            WORKDIR /usr/src/myapp
+            COPY ./web_project /app
+            WORKDIR /app
