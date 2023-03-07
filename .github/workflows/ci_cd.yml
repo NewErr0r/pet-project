@@ -44,4 +44,4 @@ jobs:
       env:
         ANSIBLE_HOST_KEY_CHECKING: False
       run: |
-        ansible-playbook -i inventory.yml playbook.yml 
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ansible-playbook -i inventory.yml playbook.yml
