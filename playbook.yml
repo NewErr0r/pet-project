@@ -2,7 +2,7 @@
 - name: Install Docker and Docker Compose on Ubuntu 20.04
   hosts: all
   become: true
-  remote_user: ${{ secrets.SSH_USERNAME }}
+  remote_user: root
 
   tasks:
     - name: Install required packages
