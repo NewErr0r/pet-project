@@ -1,0 +1,23 @@
+name: Build and push Docker image
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  DOCKER_HUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKER_HUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+  IMAGE_NAME: NewErr0r/web-project
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build Docker image
+        run: docker build -t "{IMAGE_NAME}":latest .
+      - name: Log in to Docker Hub
+        run: echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
+      - name: Push Docker image to Docker Hub
+        run: docker push your-username/your-repo:latest
