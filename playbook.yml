@@ -3,7 +3,7 @@
   hosts: all
   become: true
   vars_files: group_vars/all.yml
-  remote_user: "{{ secrets.username }}"
+  remote_user: "{{ ssh_config.SSH_USERNAME }}"
 
   tasks:
     - name: Install required packages

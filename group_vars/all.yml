@@ -1,2 +1,2 @@
-secrets:
-  username: root
+ssh_config:
+  SSH_USERNAME: root
