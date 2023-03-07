@@ -7,7 +7,7 @@ on:
 env:
   DOCKER_HUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
-  IMAGE_NAME: newerr0r/web-project
+  IMAGE_NAME: 
 
 jobs:
   build-and-push:
@@ -16,11 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker image
-        run: docker build -t "{IMAGE_NAME}":latest .
+      - name: Build Docker imagenewerr0r/web-project
+        run: docker build -t web-project:latest .
 
       - name: Log in to Docker Hub
         run: echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
         
       - name: Push Docker image to Docker Hub
-        run: docker push your-username/your-repo:latest
+        run: docker push newerr0r/web-project:latest
