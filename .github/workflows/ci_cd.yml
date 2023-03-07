@@ -36,7 +36,11 @@ jobs:
         uses: webfactory/ssh-agent@v0.4.1
 
       - name: Add SSH private key
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
+        run: |
+          mkdit /root/.ssh
+          echo ${{ SSH_PRIVATE_KEY }} > /root/.ssh/id_rsa
+          echo ${{ SSH_PUBLIC_KEY }} > /root/.ssh/id_rsa.pub
+          ssh-copy-id ${{ SSH_USERNAME }}:${{ HOST_IP }}
 
       - name: Install dependencies
         run: |
