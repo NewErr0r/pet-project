@@ -1,5 +1,5 @@
 FROM php:8-cli
 
-COPY ./web_project /usr/src/myapp
+COPY ./web_project /app
 
-WORKDIR /usr/src/myapp
+WORKDIR /app
