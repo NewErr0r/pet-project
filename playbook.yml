@@ -1,15 +1,9 @@
 ---
-- name: Развёртывание веб-проекта
+- name: Install Docker and Docker Compose on Ubuntu 20.04
   hosts: all
   become: true
-  vars_files: www-data/vars.yml
-
   tasks:
-    - name: Обновление кеша APT
-      apt:
-        update_cache: yes
-    
-    - name: Установка зависимостей
+    - name: Install required packages
       apt:
         name:
           - apt-transport-https
@@ -20,58 +14,29 @@
           - python3-pip
         state: present
 
-    - name: Добавление ключа GPG Docker
+    - name: Add Docker GPG key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
 
-    - name: Добавление репозитория Docker
+    - name: Add Docker repository
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
         state: present
 
-    - name: Установка Docker
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
       apt:
         name: docker-ce
         state: present
 
-    - name: Установка Docker Compose
-      shell: curl -sSL https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
+    - name: Install Docker Compose
+      shell: |
+        curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        chmod +x /usr/local/bin/docker-compose
+        ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
       args:
         creates: /usr/local/bin/docker-compose
-
-    - name: Перезапуск службы Docker
-      systemd:
-        name: docker
-        state: restarted
-
-    - name: Создание дирректории для хранения файлов веб-проекта
-      file:
-        path: '{{ path_for_project }}'
-        state: directory
-        mode: '0755'
-
-    - name: Копирование веб-проекта в созданную дирректорию
-      copy:
-        src: web_project
-        dest: '{{ path_for_project }}'
-
-    - name: Копирования файлов для запуска веб-проекта в контейнере
-      copy:
-        src: '{{ item }}'
-        dest: '{{ path_for_project }}'
-      loop:
-        - docker-compose.yml
-        - Dockerfile_local
-
-    - name: Pip install docker-compose
-      pip: 
-        name: docker-compose
-    
-    - name: Сборка и запуск веб-проекта в docker
-      docker_compose:
-        project_src: '{{ path_for_project }}'
-        files:
-          - docker-compose.yml 
-      
-

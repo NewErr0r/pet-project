@@ -4,9 +4,9 @@ services:
   php:
     build:
       context: .
-      dockerfile: Dockerfile_local
+      dockerfile: Dockerfile
     volumes:
-      - ./web_project:/app
+      - ../web_project:/app
     working_dir: /app
     user: '1000:1000'
     ports:
