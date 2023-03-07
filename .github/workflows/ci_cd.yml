@@ -1,4 +1,4 @@
-name: CI/CD Pipeline 
+name: CI/CD Pipeline
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 env:
   DOCKER_HUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
-  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 jobs:
   build-and-push:
@@ -33,11 +32,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up SSH key
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem && chmod 600 ssh_key.pem && ssh-add ssh_key.pem
+
       - name: Install ssh-agent
         uses: webfactory/ssh-agent@v0.4.1
-
-      - name: Add SSH private key
-        run: echo "${SSH_PRIVATE_KEY}" | ssh-add -
 
       - name: Install dependencies
         run: |
