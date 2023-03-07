@@ -4,3 +4,4 @@ all:
       ansible_host: ${{ secrets.HOST_IP }}
       ansible_user: ${{ secrets.SSH_USERNAME }}
       ansible_port: ${{ secrets.SSH_PORT }}
+      ansible_pass: ${{ secrets.SSH_PASSWORD }}
