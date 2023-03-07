@@ -16,8 +16,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker imagenewerr0r/web-project
-        run: docker build -t web-project:latest .
+      - name: Build Docker image
+        run: docker build -t newerr0r/web-project:latest .
 
       - name: Log in to Docker Hub
         run: echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
