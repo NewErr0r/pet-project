@@ -37,7 +37,7 @@ jobs:
 
       - name: Add SSH private key
         run: |
-          mkdit /root/.ssh
+          mkdir /root/.ssh
           echo ${{ SSH_PRIVATE_KEY }} > /root/.ssh/id_rsa
           echo ${{ SSH_PUBLIC_KEY }} > /root/.ssh/id_rsa.pub
           ssh-copy-id ${{ SSH_USERNAME }}:${{ HOST_IP }}
