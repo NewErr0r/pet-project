@@ -1,0 +1,33 @@
+name: Ansible Deployment
+
+on:
+  workflow_dispatch:
+  
+env:
+  VAULT_PASS: ${{ secrets.VAULT_PASS }}
+
+jobs:
+  ansible-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install ssh-agent
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add SSH private key
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo apt-add-repository ppa:ansible/ansible
+          sudo apt-get update
+          sudo apt-get install -y ansible
+      
+      - name: Run Ansible playbook
+        run: ansible-playbook playbook.yml -i inventory --vault-password-file=<(echo $VAULT_PASS)
