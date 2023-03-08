@@ -1,5 +1,0 @@
-all:
-  hosts:
-    remote:
-      ansible_host: ${{ secrets.HOST_IP }}
-      ansible_user: ${{ secrets.SSH_USERNAME }}

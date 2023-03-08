@@ -1,8 +1,8 @@
 /web_project/vendor/
 /web_project/composer.json
 /web_project/composer.lock
-ansible.cfg
-inventory/*
+/ansible/ansible.cfg
+/ansible/inventory/*
 www-data/vars.yml
 www-data/ssl/*
 /web_project/src

@@ -49,4 +49,4 @@ jobs:
           sudo apt-get install -y ansible
       - name: Run ansible playbook
         run: |
-          ansible-playbook -i inventory.yml playbook.yml
+          ansible-playbook playbook.yml

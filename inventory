@@ -1,0 +1,6 @@
+[web]
+${{ secrets.HOST_IP }}
+
+[web:vars]
+ansible_user = ${{ secrets.SSH_USERNAME }}
+ansible_pass = ${{ secrets.SSH_PASSWORD }}
