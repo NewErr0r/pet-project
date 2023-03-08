@@ -1,14 +1,14 @@
-FROM php:8-cli
+FROM php:8.0-apache
 
-RUN apt-get update && apt-get install -y curl git zip \
-    && rm -rf /var/lib/apt/lists/*
+# Копирование файлов проекта внутрь контейнера
+COPY ./web_project /var/www/html/
 
-RUN docker-php-ext-install pdo mysqli pdo_mysql
+# Установка необходимых расширений PHP
+RUN docker-php-ext-install mysqli pdo pdo_mysql && \
+    a2enmod rewrite
 
-COPY --from=composer /usr/bin/composer /usr/bin/composer
-
-COPY ./web_project /app
-
-WORKDIR /app
-
+# Определение порта
 EXPOSE 8000
+
+# Запуск Apache внутри контейнера
+CMD ["apache2-foreground"]
