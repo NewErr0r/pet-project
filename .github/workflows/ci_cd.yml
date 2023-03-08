@@ -8,6 +8,7 @@ on:
 env:
   DOCKER_HUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+  VAULT_PASS: ${{ secrets.VAULT_PASS }}
 
 jobs:
   build-and-push:
@@ -47,6 +48,6 @@ jobs:
           sudo apt-add-repository ppa:ansible/ansible
           sudo apt-get update
           sudo apt-get install -y ansible
-      - name: Run ansible playbook
-        run: |
-          ansible-playbook playbook.yml
+      
+      - name: Run Ansible playbook
+        run: ansible-playbook playbook.yml -i inventory --vault-password-file=<(echo $VAULT_PASS)
