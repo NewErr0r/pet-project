@@ -29,7 +29,7 @@ jobs:
 
   ansible-deployment:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'playbook.yml')
+    if: github.event_name == 'push' && (github.event.head_commit.modified | contains('playbook.yml') || github.event.workflow_dispatch)
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
