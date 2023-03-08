@@ -29,7 +29,7 @@ jobs:
 
   ansible-deployment:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.event.head_commit.modified | contains('playbook.yml')
+    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'playbook.yml')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -56,7 +56,7 @@ jobs:
   docker-deployment:
     runs-on: ubuntu-latest
     needs: build-and-push
-    if: github.event_name == 'push' && github.event.head_commit.modified | contains('Dockerfile')
+    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'Dockerfile')
     steps:
       - name: Execute Docker commands on remote server
         uses: appleboy/ssh-action@master
@@ -67,4 +67,3 @@ jobs:
           script: |
             docker pull newerr0r/web-project:latest
             docker run -d -p 8000:80 newerr0r/web-project
-
