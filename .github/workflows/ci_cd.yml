@@ -30,6 +30,7 @@ jobs:
 
   ansible-deployment:
     runs-on: ubuntu-latest
+    if: ${{ contains(github.event.head_commit.modified, 'inventory') }}
     needs: build-and-push
     steps:
       - name: Checkout code
