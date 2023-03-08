@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  php:
+    image: newerr0r/web-project:latest
+    user: '1000:1000'
+    ports:
+      - 8000:8000
+    command: bash -c "composer install && php -S 0.0.0.0:8000 -t /app"
