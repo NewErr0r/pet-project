@@ -10,3 +10,5 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY ./web_project /app
 
 WORKDIR /app
+
+EXPOSE 8000
