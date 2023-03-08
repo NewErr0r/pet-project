@@ -58,6 +58,7 @@ jobs:
   docker-deployment:
     runs-on: ubuntu-latest
     needs: ansible-deployment
+    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'inventory')
     steps:
       - name: Execute Docker commands on remote server
         uses: appleboy/ssh-action@master
