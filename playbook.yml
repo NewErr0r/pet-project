@@ -41,8 +41,3 @@
         ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
       args:
         creates: /usr/local/bin/docker-compose
-
-    - name: Copy docker-compose file
-      copy:
-        src: docker-compose.yml
-        dest: /root
