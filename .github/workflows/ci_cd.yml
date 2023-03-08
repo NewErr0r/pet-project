@@ -29,7 +29,7 @@ jobs:
 
   ansible-deployment:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && (github.event.head_commit.modified | contains('playbook.yml') || github.event.workflow_dispatch)
+    if: github.event_name == 'push' && (contains(github.event.head_commit.modified, 'playbook.yml') || github.event_name == 'workflow_dispatch')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -52,6 +52,7 @@ jobs:
       
       - name: Run Ansible playbook
         run: ansible-playbook playbook.yml -i inventory --vault-password-file=<(echo $VAULT_PASS)
+
 
   docker-deployment:
     runs-on: ubuntu-latest
