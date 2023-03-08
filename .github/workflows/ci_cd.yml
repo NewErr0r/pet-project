@@ -55,9 +55,9 @@ jobs:
       - name: Execute Docker commands on remote server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.HOST_IP }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             docker pull newerr0r/web-project:latest
-            docker run -p 8000:8000 newerr0r/web-project:latest
+            docker run -d -p 8000:8000 newerr0r/web-project:latest
