@@ -23,10 +23,7 @@ jobs:
         env:
           SERVER_CRT: ${{ secrets.SERVER_CRT }}
           SERVER_KEY: ${{ secrets.SERVER_KEY }}
-        run: |
-          SERVER_CRT_ESC=$(echo "$SERVER_CRT" | sed 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')
-          SERVER_KEY_ESC=$(echo "$SERVER_KEY" | sed 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')
-          docker build --build-arg server_crt="$SERVER_CRT_ESC" --build-arg server_key="$SERVER_KEY_ESC" -t newerr0r/web-project:latest .
+        run: docker build --build-arg server_crt="$SERVER_CRT_ESC" --build-arg server_key="$SERVER_KEY_ESC" -t newerr0r/web-project:latest .
 
 
       - name: Log in to Docker Hub
