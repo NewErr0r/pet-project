@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     && docker-php-ext-install pdo pdo_pgsql zip
 
-EXPOSE 80
+EXPOSE 443
 
 ARG server_crt
 ARG server_key
