@@ -12,7 +12,7 @@ EXPOSE 80
 ARG server_crt
 ARG server_key
 
-RUN echo "${server_crt}" > /app/certs/server.crt
-RUN echo "${server_key}" > /app/certs/server.key
+COPY ${server_crt} /app/certs/server.crt
+COPY ${server_key} /app/certs/server.key
 
-CMD ["php", "-S", "0.0.0.0:443", "-t", "/app", "--cert", "/app/certs/server.crt", "--key", "/app/certs/server.key"]
+CMD ["php", "-S", "0.0.0.0:443", "-t", "/app", "--ssl", "--cert", "/app/certs/server.crt", "--key", "/app/certs/server.key"]
