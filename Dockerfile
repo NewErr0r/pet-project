@@ -9,4 +9,10 @@ RUN apt-get update && apt-get install -y \
 
 EXPOSE 80
 
-CMD ["php", "-S", "0.0.0.0:80", "-t", "/app"]
+ARG server_crt
+ARG server_key
+
+RUN echo "${server_crt}" > /app/certs/server.crt
+RUN echo "${server_key}" > /app/certs/server.key
+
+CMD ["php", "-S", "0.0.0.0:443", "-t", "/app", "--cert", "/app/certs/server.crt", "--key", "/app/certs/server.key"]

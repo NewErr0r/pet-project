@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker image
-        run: docker build -t newerr0r/web-project:latest .
+        run: docker-compose build -t newerr0r/web-project:latest
 
       - name: Log in to Docker Hub
         run: echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
@@ -71,4 +71,4 @@ jobs:
             docker rm web-project
             docker rmi  newerr0r/web-project:latest
             docker pull newerr0r/web-project:latest
-            docker run --name web-project -d -p 8000:80 newerr0r/web-project
+            docker run --name web-project -d -p 443:443 newerr0r/web-project

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      args:
+        server_crt: ${SERVER_CRT}
+        server_key: ${SERVER_KEY}
+    ports:
+      - "443:443"
+    secrets:
+      - SERVER_CRT
+      - SERVER_KEY
+secrets:
+  SERVER_CRT:
+    external: true
+  SERVER_KEY:
+    external: true
