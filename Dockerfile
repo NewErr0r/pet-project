@@ -1,10 +1,12 @@
-FROM php:8.0-apache
+FROM php:8-cli
 
-COPY ./web_project /var/www/html/
+COPY ./web_project /app
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql && \
-    a2enmod rewrite
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libzip-dev \
+    && docker-php-ext-install pdo pdo_pgsql zip
 
 EXPOSE 8000
 
-CMD ["apache2-foreground"]
+CMD ["php", "-S", "0.0.0.0:8000", "-t", "/app"]
