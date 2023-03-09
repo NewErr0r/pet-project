@@ -19,12 +19,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and run Docker container
-        env:
-          SERVER_CRT: ${{ secrets.SERVER_CRT }}
-          SERVER_KEY: ${{ secrets.SERVER_KEY }}
-        run: docker build --build-arg server_crt=$SERVER_CRT --build-arg server_key=$SERVER_KEY -t newerr0r/web-project:latest .
-
+      - name: Build Docker image
+        run: docker build -t newerr0r/web-project:latest .
 
       - name: Log in to Docker Hub
         run: echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
@@ -75,4 +71,4 @@ jobs:
             docker rm web-project
             docker rmi  newerr0r/web-project:latest
             docker pull newerr0r/web-project:latest
-            docker run --name web-project -d -p 443:443 newerr0r/web-project
+            docker run --name web-project -d -p 8000:80 newerr0r/web-project
