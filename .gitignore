@@ -6,3 +6,4 @@
 www-data/vars.yml
 www-data/ssl/*
 /web_project/src
+www-data/*
