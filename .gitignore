@@ -7,3 +7,5 @@ www-data/vars.yml
 www-data/ssl/*
 /web_project/src
 www-data/*
+local_environment/postgres_data/*
+web_project/db_config.php

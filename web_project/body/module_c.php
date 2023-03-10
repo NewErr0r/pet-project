@@ -392,7 +392,7 @@
           </div>
         </div>      
     
-    <p><a href="#" class="btn-scroll-to-top w-100 btn btn-lg btn-outline-primary">Наверх</a></p>
+    <p><a href="#" class="btn-scroll-to-top w-100 btn btn-lg btn-outline-primary">В начало</a></p>
     <?php require "../blocks/footer.php" ?>
 </body>
 </html>

@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../web_project:/app
+    working_dir: /app
+    user: '1000:1000'
+    ports:
+      - 8000:8000
+    command: bash -c "composer install && php -S 0.0.0.0:8000 -t /app"
+
+  db:
+    container_name: pg_db
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: P@ssw0rd
+      POSTGRES_DB: my_db
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@sysahelper.ru
+      PGADMIN_DEFAULT_PASSWORD: P@ssw0rd
+    ports: 
+      - "5050:80"
