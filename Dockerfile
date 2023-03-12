@@ -2,6 +2,8 @@ FROM php:8-cli
 
 COPY ./web_project /app
 
+WORKDIR /app
+
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     libzip-dev \
