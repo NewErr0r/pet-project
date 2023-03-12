@@ -9,3 +9,6 @@ www-data/ssl/*
 www-data/*
 local_environment/postgres_data/*
 web_project/db_config.php
+nginx_proxy_manager.yml
+nginx.conf
+yandex.metrica

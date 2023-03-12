@@ -14,18 +14,16 @@
     <?php require "../../blocks/header.php" ?>
 
     <?php
-    $suggestions1 = array();
-    for ($i = 0; $i < 6; $i++) {
-      $suggestions1[$i] = array("name" => "", "username" => "");
-    }
-    $suggestions1[0]["name"] = "Active Directory";
-    $suggestions1[1]["name"] = "FreeIPA";
-    $suggestions1[2]["name"] = "DNS";
-    $suggestions1[3]["name"] = "DHCP";
-    $suggestions1[4]["name"] = "NTP";
-    $suggestions1[5]["name"] = "SSH";
+    $suggestions1 = array(
+        array("name" => "Active Directory", "username" => "active_directory"),
+        array("name" => "FreeIPA", "username" => "freeipa"),
+        array("name" => "DNS", "username" => "dns"),
+        array("name" => "DHCP", "username" => "dhcp"),
+        array("name" => "NTP", "username" => "ntp"),
+        array("name" => "SSH", "username" => "ssh")
+    );
     ?>
-
+    
     <div class="my-1 p-4 bg-body rounded shadow-sm">
         <h6 class="border-bottom pb-2 mb-0" style="font-size: 20px;">
             <a href="#" id="toggle-btn-1">Базовые инфруструктурные службы:</a>
@@ -37,13 +35,14 @@
                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                     <div class="d-flex justify-content-between">
                         <strong class="text-dark" style="font-size: 20px;"><?php echo $suggestion1['name']; ?></strong>
-                        <a href="#">Посмотреть</a>
+                        <a href="instructions/<?php echo $suggestion1['username']; ?>.php">Посмотреть</a>
                     </div>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
     </div>
+
 
     <?php
     $suggestions2 = array();
