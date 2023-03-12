@@ -14,9 +14,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-HbRl6YEMBLcUfrnmSGFVFrI2ldC3q0QJQ2zGmbRACMh4Z4e4YB3GXq3bFjO8OncW0GvPztlmvj0oFCc8xE0Wug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <title>Module C: Ansible</title>
-</head>
-<body>
-
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -34,7 +31,8 @@
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/92777923" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
-  
+</head>
+<body>
     <?php require "../blocks/header.php" ?>
     <p><a href="../pages/page_6.php" class="w-10 btn btn-lg btn-outline-primary">Назад:</a></p>
 

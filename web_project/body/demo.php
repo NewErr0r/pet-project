@@ -7,9 +7,6 @@
 <!---    <link rel="stylesheet" href="../css/style.css"> !--->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <title>DEMO</title>
-</head>
-<body>
-
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -27,7 +24,8 @@
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/92777923" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
-  
+</head>
+<body>
     <?php require "../blocks/header.php" ?>    
 
 <div class="d-flex flex-wrap mx-4 mb-4">
